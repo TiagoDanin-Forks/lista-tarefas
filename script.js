@@ -1,6 +1,12 @@
 const taskInput = document.getElementById('taskInput');
 const addBtn = document.getElementById('addBtn');
 const taskList = document.getElementById('taskList');
+const counter = document.getElementById('counter');
+
+function updateCounter() {
+    const completed = taskList.querySelectorAll('.completed').length;
+    counter.textContent = `Concluídas: ${completed}`;
+}
 
 addBtn.addEventListener('click', addTask);
 taskInput.addEventListener('keypress', (e) => {
@@ -19,6 +25,7 @@ function addTask() {
     span.textContent = taskText;
     span.addEventListener('click', () => {
         li.classList.toggle('completed');
+        updateCounter();
     });
 
     const deleteBtn = document.createElement('button');
@@ -26,6 +33,7 @@ function addTask() {
     deleteBtn.textContent = 'Excluir';
     deleteBtn.addEventListener('click', () => {
         li.remove();
+        updateCounter();
     });
 
     li.appendChild(span);
