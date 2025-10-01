@@ -25,6 +25,18 @@ function addTask() {
     span.textContent = taskText;
     span.addEventListener('click', () => {
         li.classList.toggle('completed');
+        if (typeof completeBtn !== 'undefined') {
+            completeBtn.textContent = li.classList.contains('completed') ? 'Desfazer' : 'Concluir';
+        }
+        updateCounter();
+    });
+
+    const completeBtn = document.createElement('button');
+    completeBtn.className = 'complete-btn';
+    completeBtn.textContent = 'Concluir';
+    completeBtn.addEventListener('click', () => {
+        li.classList.toggle('completed');
+        completeBtn.textContent = li.classList.contains('completed') ? 'Desfazer' : 'Concluir';
         updateCounter();
     });
 
@@ -37,6 +49,7 @@ function addTask() {
     });
 
     li.appendChild(span);
+    li.appendChild(completeBtn);
     li.appendChild(deleteBtn);
     taskList.appendChild(li);
 
