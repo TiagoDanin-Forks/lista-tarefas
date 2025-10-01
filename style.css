@@ -23,8 +23,14 @@ body {
 }
 
 h1 {
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
     color: #333;
+}
+
+#counter {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 1.5rem;
 }
 
 .input-container {
