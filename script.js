@@ -2,6 +2,7 @@ const taskInput = document.getElementById('taskInput');
 const addBtn = document.getElementById('addBtn');
 const taskList = document.getElementById('taskList');
 const counter = document.getElementById('counter');
+const clearAllBtn = document.getElementById('clearAllBtn');
 
 function updateCounter() {
     const completed = taskList.querySelectorAll('.completed').length;
@@ -11,6 +12,15 @@ function updateCounter() {
 addBtn.addEventListener('click', addTask);
 taskInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') addTask();
+});
+
+clearAllBtn.addEventListener('click', () => {
+    if (taskList.children.length > 0) {
+        if (confirm('Tem certeza que deseja remover todas as tarefas?')) {
+            taskList.innerHTML = '';
+            updateCounter();
+        }
+    }
 });
 
 function addTask() {
